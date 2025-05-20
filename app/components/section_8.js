@@ -178,12 +178,6 @@ export default function Section8() {
                                 <div className="testinomial-text">
                                     We have introduced the value that our functions bring. We feel that this specialist part of Human Resources contributes to digital marketing.
                                 </div>
-                                <Link href="#" className="testinomial-link">
-
-                                    <span className="link-btn">View All Testimonials</span>
-                                    <i className="fa-solid fa-arrow-right-long arrow"></i>
-
-                                </Link>
                             </div>
 
                             {/* Right Column */}

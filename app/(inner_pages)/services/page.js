@@ -27,13 +27,13 @@ export default function Service() {
               <div className="service-page-breadcrumbs">
                 <div className="service-page-breadcrumbs-inner">
                   <span>
-                    <Link title="" href="/" class="home"><span>Home</span></Link>
+                    <Link title="" href="/" className="home"><span>Home</span></Link>
                   </span>
-                  <span class="sep">-</span>
+                  <span className="sep">-</span>
                   <span>
-                    <Link title="" href="/services" class="home"><span>Services</span></Link>
+                    <Link title="" href="/services" className="home"><span>Services</span></Link>
                   </span>
-                  
+
                 </div>
 
               </div>

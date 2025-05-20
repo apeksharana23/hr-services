@@ -7,13 +7,12 @@ export async function POST(request) {
     try {
         await dbConnect();
         const { email, password } = await request.json();
-        console.log(email, password);
         const user = await User.findOne({ email: email });
         if (user) {
             const isMatch = await bcrypt.compare(password, user.password);
             if (isMatch) {
                 const encodedKey = new TextEncoder().encode(process.env.JWT_SECRET);
-                const token = await new SignJWT({ id: user._id }).setProtectedHeader({ alg: 'HS256' }).setIssuedAt().setExpirationTime('7d').sign(encodedKey);
+                const token = await new SignJWT({ id: user._id.toString() }).setProtectedHeader({ alg: 'HS256' }).setIssuedAt().setExpirationTime('7d').sign(encodedKey);
                 return new Response(JSON.stringify({
                     status: true,
                     message: "User Sign In Successfully",
@@ -31,8 +30,7 @@ export async function POST(request) {
         } else {
             return new Response(JSON.stringify({
                 status: false,
-                message: "Email id not found in our database",
-                data: user
+                message: "Email id not found in our database"
             }), { status: 404 });
         }
 

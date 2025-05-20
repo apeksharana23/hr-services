@@ -1,3 +1,6 @@
+"use client";
+ 
+import React from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
@@ -8,6 +11,35 @@ import { faSquareFacebook, faXTwitter, faInstagram, faLinkedin } from '@fortawes
 
 
 export default function ContactUs() {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+            if (result.status) {
+                alert(result.message);
+                e.target.reset();
+            } else {
+                alert(result.message);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+        }
+    };
+
+
+
+
     return (
         <div className="contact-us">
             <div className="about-page-header">
@@ -23,11 +55,11 @@ export default function ContactUs() {
                             <div className="about-page-breadcrumbs">
                                 <div className="about-page-breadcrumbs-inner">
                                     <span>
-                                        <Link href="/" class="home"><span>Home</span></Link>
+                                        <Link href="/" className="home"><span>Home</span></Link>
                                     </span>
                                     <span className="sep">-</span>
                                     <span>
-                                        <Link href="/contact" class="home"><span>Conatct Us</span></Link>
+                                        <Link href="/contact" className="home"><span>Contact Us</span></Link>
                                     </span>
 
                                 </div>
@@ -134,50 +166,50 @@ export default function ContactUs() {
                                     <ul className="pbmit-social-links pt-3">
                                         <li className="pbmit-social-li pbmit-social-facebook ">
                                             <Link href="#" target="_blank" rel="noopener">
-                                                <span><FontAwesomeIcon icon={faSquareFacebook} width="15"  height="30" /> </span>
+                                                <span><FontAwesomeIcon icon={faSquareFacebook} width="15" height="30" /> </span>
                                             </Link>
                                         </li>
-                                        <li class="pbmit-social-li pbmit-social-twitter ">
-                                        <Link href="#" target="_blank" rel="noopener">
-                                                <span><FontAwesomeIcon icon={faXTwitter} width="15"  height="30" /> </span>
+                                        <li className="pbmit-social-li pbmit-social-twitter ">
+                                            <Link href="#" target="_blank" rel="noopener">
+                                                <span><FontAwesomeIcon icon={faXTwitter} width="15" height="30" /> </span>
                                             </Link>
                                         </li>
-                                        <li class="pbmit-social-li pbmit-social-linkedin ">
-                                        <Link href="#" target="_blank" rel="noopener">
-                                                <span><FontAwesomeIcon icon={faInstagram} width="15"  height="30" /> </span>
+                                        <li className="pbmit-social-li pbmit-social-linkedin ">
+                                            <Link href="#" target="_blank" rel="noopener">
+                                                <span><FontAwesomeIcon icon={faInstagram} width="15" height="30" /> </span>
                                             </Link>
                                         </li>
-                                        <li class="pbmit-social-li pbmit-social-instagram ">
-                                        <Link href="#" target="_blank" rel="noopener">
-                                                <span><FontAwesomeIcon icon={faLinkedin} width="15"  height="30" /> </span>
+                                        <li className="pbmit-social-li pbmit-social-instagram ">
+                                            <Link href="#" target="_blank" rel="noopener">
+                                                <span><FontAwesomeIcon icon={faLinkedin} width="15" height="30" /> </span>
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div className="col-md-6">
-                            <div className='contact-form'>
-                                    <div className='row mb-3 g-3'>
-                                    <div className='col-lg-6'>
-                                    <input type="text" class="form-control-1" placeholder="Your Name" name="Your Name" />
-                                    </div>
-                                    <div className='col-lg-6'>
-                                    <input type="email" class="form-control-1" placeholder="Email Address" name="Email Address"/> 
-                                  </div>
-                                    <div className='col-lg-6'>
-                                    <input type="number" class="form-control-1" placeholder="Phone Number" name="Phone Number"/>
-                                    </div>
-                                    <div className='col-lg-6'>
-                                    <input type="email" class="form-control-1" placeholder="Email Address" name="Email Address"/>
-                                    </div>
-                                    <div className='col-lg-12'>
-                                    <textarea class="form-control-1" name="message" rows="5" placeholder="Write Message"></textarea>
-                                    </div>
-                                    <div className='col-lg-12'>
-                                    <a href="#" class="message-btn">Send Message</a>
-                                    </div>
-                                    </div>
+                                <div className='contact-form'>
+                                    <form onSubmit={handleSubmit}>
+                                        <div className='row mb-3 g-3'>
+                                            <div className='col-lg-6'>
+                                                <input type="text" className="form-control-1" placeholder="Your Name" name="name" required />
+                                            </div>
+                                            <div className='col-lg-6'>
+                                                <input type="email" className="form-control-1" placeholder="Email Address" name="email" required />
+                                            </div>
+                                            <div className='col-lg-6'>
+                                                <input type="tel" className="form-control-1" placeholder="Phone Number" name="phone" />
+                                            </div>
+                                            <div className='col-lg-12'>
+                                                <textarea className="form-control-1" name="message" rows="5" placeholder="Write Message" required></textarea>
+                                            </div>
+                                            <div className='col-lg-12'>
+                                                <button type="submit" className="message-btn">Send Message</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
+
                             </div>
 
                         </div>

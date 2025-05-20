@@ -28,11 +28,11 @@ export default function AboutUs() {
                             <div className="about-page-breadcrumbs">
                                 <div className="about-page-breadcrumbs-inner">
                                     <span>
-                                        <Link href="/" class="home"><span>Home</span></Link>
+                                        <Link href="/" className="home"><span>Home</span></Link>
                                     </span>
                                     <span className="sep">-</span>
                                     <span>
-                                        <Link href="/about-us" class="home"><span>About</span></Link>
+                                        <Link href="/about-us" className="home"><span>About</span></Link>
                                     </span>
 
                                 </div>
@@ -185,7 +185,7 @@ export default function AboutUs() {
                             <h3 className="about-footer-content">
                             Call adviser for Emphires HR outsourcing service business
                             </h3>
-                            <div class="cta-icon">
+                            <div className="cta-icon">
                                     <Image className="icon-img" src={ctaicon2Image} alt=""></Image>
                                 </div>
                         </div>

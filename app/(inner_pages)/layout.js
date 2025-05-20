@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 const nunito = Nunito({
     variable: "--font-nunito-sans",
     display: "swap",
-    weight: ["300", "400", "600", "700","800", "900"],
+    weight: ["300", "400", "600", "700", "800", "900"],
     subsets: ["latin"],
-  });
+});
 
 export const metadata = {
     title: "Login",
@@ -28,10 +28,10 @@ export const metadata = {
 
 export default function PageLayout({ children }) {
     return (
-        <div>
-            <PageHeader /> {/* Add the Header component */}
-            {children} {/* Render the page content */}
-            <PageFooter /> {/* Add the Footer component */}
-        </div>
+        <>
+            <PageHeader />
+            {children}
+            <PageFooter />
+        </>
     );
 }

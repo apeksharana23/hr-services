@@ -14,14 +14,9 @@ export default function Section2() {
                         </h1>
                         <div className="btn-play">
                             <div className="btn-3">
-                                <Link href="#">Contact Us</Link>
+                                <Link href="/contact">Contact Us</Link>
                             </div>
-                            <div className="play">
-                                <Link href="#">
-                                    <Image src={play4Image} width={30} height={30} alt="Play" />
-                                </Link>
-                                <h4>How we work</h4>
-                            </div>
+
                             <div className="clear"></div>
                         </div>
                     </div>

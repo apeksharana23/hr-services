@@ -13,7 +13,8 @@ export async function POST(request) {
       password,
       confirm_password,
     } = await request.json();
-    const role = 'hr'; 
+
+    const role = 'hr';
 
     if (!name || !email || !phone || !password || !confirm_password || !role) {
       return Response.json({ status: false, message: "All fields are required" }, { status: 400 });
@@ -49,7 +50,10 @@ export async function POST(request) {
         name: newUser.name,
         email: newUser.email,
         phone: newUser.phone,
-        role: newUser.role
+        role: newUser.role, 
+        verificationToken: newUser.verificationToken,
+        createdAt: newUser.createdAt,
+        updatedAt: newUser.updatedAt,   
       }
     }, { status: 201 });
 

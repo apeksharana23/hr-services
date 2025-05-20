@@ -17,31 +17,39 @@ export default function SideBarDashboard() {
                <div className='sidebar'>
                     <div className='sidebar-logo'>
                          <Link href="/" className='logo-hr'>
-                              <Image src={logoSidebarImage} alt="Logo" width={100} height={100} className='logo-sidebar' />
+                              <Image
+                                   src={logoSidebarImage}
+                                   alt="Logo"
+                                   width={100}
+                                   height={100}
+                                   className='logo-sidebar'
+                              />
                          </Link>
                     </div>
                     <div className='sidebar-inner'>
                          <div className='sidebar-inner-menu'>
                               <Sidebar className='sidebar-menu'>
                                    <Menu iconShape="square" className='sidebar-menu' icons={<IconChevronDown size={20} />}>
-                                        
-                                   <SubMenu label="Employees" icon={<IconUser size={50} />} className='menu-item'>
-                                             <Link href="/Employees"><MenuItem> Employee List </MenuItem></Link>
-                                             <Link href="/add-employee"><MenuItem>Add Employee </MenuItem></Link>
-                                             <Link href="/designation"><MenuItem>Designation </MenuItem></Link>
-                                             <Link href="/policies"><MenuItem>Policies </MenuItem></Link>
+
+                                        <SubMenu label="Employees" icon={<IconUser size={50} />} className='menu-item'>
+                                             <MenuItem component={<Link href="/Employees"></Link>}>Employee Details</MenuItem>
+                                             <MenuItem component={<Link href="/add-employee"></Link>}>Add Employee </MenuItem>
+                                             <MenuItem component={<Link href="/designation"></Link>}>Designation </MenuItem>
+                                             <MenuItem component={<Link href="/policies"></Link>}>Policies </MenuItem>
 
                                         </SubMenu>
                                         <SubMenu label="Training" icon={<IconEdit size={50} />} className='menu-item'>
-                                            <Link href="#"><MenuItem> Trainees List </MenuItem></Link>
-                                             <MenuItem> Line charts </MenuItem>
+                                             <MenuItem component={<Link href="/training-list"></Link>}> Training List </MenuItem>
+                                             <MenuItem component={<Link href="/traines"></Link>}> Traines </MenuItem>
+                                             <MenuItem component={<Link href="/training-type"></Link>}> Training Type</MenuItem>
+
                                         </SubMenu>
                                         <SubMenu label="Attendance" icon={<IconListCheck size={50} />} className='menu-item'>
-                                             <MenuItem> Pie charts </MenuItem>
-                                             <MenuItem> Line charts </MenuItem>
+                                             <MenuItem> Employees Attendance </MenuItem>
+                                             <MenuItem>  </MenuItem>
                                         </SubMenu>
-                                        <MenuItem icon={<IconCalendarWeek size={20} />} className='menu-item'> Holidays </MenuItem>
-                                        
+                                        <MenuItem icon={<IconCalendarWeek size={20} />} className='menu-item' component={<Link href="/holidays"></Link>}> Holidays </MenuItem>
+
                                    </Menu>
                               </Sidebar>
                          </div>

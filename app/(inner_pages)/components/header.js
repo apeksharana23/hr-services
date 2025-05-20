@@ -16,7 +16,7 @@ const PageHeader = () => {
             <div className="left-img-new">
               <h3>
                 <Image src={emailImage} width="30" height="30" alt="Email" />
-                <p>Email Address : info@emphires.com</p>
+                <p>Email Address : info@smarthr.com</p>
               </h3>
             </div>
             <div className="right-img-new">
@@ -49,7 +49,7 @@ const PageHeader = () => {
       </div>
       <div className="header-new">
         <nav>
-          <div className="logo-new">Emphires</div>
+          <div className="logo-new">Smart HR</div>
           <ul className="nav-links-new">
             <li>
               <Link href="/">Home</Link>
@@ -66,12 +66,15 @@ const PageHeader = () => {
             <li>
               <Link href="/login">Login</Link>
             </li>
+            <li>
+              <Link href="/join-us-sign-in">Join Us</Link>
+            </li>
 
           </ul>
 
 
-          <div class="col-md-3 register-hr">
-            <div class="about-button"><a class="abt-btn bg-chnge" href="/sign-up">Register as Hr</a>
+          <div className="col-md-3 register-hr">
+            <div className="about-button"><a className="abt-btn bg-chnge" href="/sign-up">Register as Hr</a>
             </div>
           </div>
 

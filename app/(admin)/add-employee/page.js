@@ -1,12 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { IconPhoto } from '@tabler/icons-react';
 
 export default function AddEmployee() {
     const [fileName, setFileName] = useState("");
     const [fullname, setFullname] = useState("");
-    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [company, setCompany] = useState("");
@@ -18,9 +17,8 @@ export default function AddEmployee() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+    const [getDesignations, setDesignations] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
     const notifySettings = {
         position: "top-right",
         autoClose: 3000,
@@ -30,6 +28,21 @@ export default function AddEmployee() {
         draggable: true,
         theme: "light",
     };
+
+    useEffect(() => {
+        const fetchDesignations = async () => {
+            try{
+                const response = await fetch(`/api/designation-list`);
+                const data = await response.json();
+                console.log(data.data)
+                setDesignations(data.data);
+            }catch(err){
+                console.log("Error fetching designations", err);
+            }
+        }
+
+        fetchDesignations();
+    }, []);
 
     const handleSubmitForm = async (e) => {
         e.preventDefault();
@@ -41,26 +54,22 @@ export default function AddEmployee() {
             return;
         }
 
-        const formData = {
-            name: fullname,
-            lastName,
-            email,
-            phone,
-            company,
-            designation,
-            employeeId,
-            joiningDate,
-            username,
-            password,
-        };
+        const formData = new FormData();
+        formData.append("fileName", fileName);
+        formData.append("name", fullname);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("company", company);
+        formData.append("designation", designation);
+        formData.append("employeeId", employeeId);
+        formData.append("joiningDate", joiningDate);
+        formData.append("username", username);
+        formData.append("password", password);        
 
         try {
             const response = await fetch("/api/addEmployee", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
+                body: formData,
             });
 
             const contentType = response.headers.get("content-type");
@@ -77,12 +86,10 @@ export default function AddEmployee() {
               toast.success(data.message, notifySettings);
                 // Clear form
                 setFullname("");
-                setLastName("");
                 setEmail("");
                 setPhone("");
                 setCompany("");
                 setDesignation("");
-                setEmployeeId("");
                 setJoiningDate("");
                 setUsername("");
                 setPassword("");
@@ -100,7 +107,7 @@ export default function AddEmployee() {
     };
 
     return (
-        <form onSubmit={handleSubmitForm}>
+        <form onSubmit={handleSubmitForm} encType='multipart/form-data'>
             <div className="tab-content bg-colorr" id="myTabContent">
                 <div className="tab-pane fade active show" id="basic-info">
                     <div className="modal-body pb-0">
@@ -122,25 +129,14 @@ export default function AddEmployee() {
                                                 <input
                                                     type="file"
                                                     className="d-none"
-                                                    onChange={(e) => {
-                                                        const file = e.target.files?.[0];
-                                                        if (file) setFileName(file.name);
-                                                    }}
+                                                    onChange={(e) => setFileName(e.target.files[0])}
+                                                    accept="image/*"
                                                 />
                                             </label>
-                                            <button
-                                                className="btn btn-light btn-sm"
-                                                onClick={() => setFileName("")}
-                                                type="button"
-                                            >
+                                            <button className="btn btn-light btn-sm" onClick={() => setFileName("")} type="button">
                                                 Cancel
                                             </button>
                                         </div>
-                                        {fileName && (
-                                            <small className="text-muted ms-1 mt-1 d-block">
-                                                Selected File: {fileName}
-                                            </small>
-                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -149,14 +145,6 @@ export default function AddEmployee() {
                             <div className="col-md-6 mb-3">
                                 <label className="form-label">First Name *</label>
                                 <input type="text" className="form-control" value={fullname} onChange={(e) => setFullname(e.target.value)} required />
-                            </div>
-                            <div className="col-md-6 mb-3">
-                                <label className="form-label">Last Name</label>
-                                <input type="text" className="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                            </div>
-                            <div className="col-md-6 mb-3">
-                                <label className="form-label">Employee ID *</label>
-                                <input type="text" className="form-control" value={employeeId} onChange={(e) => setEmployeeId(e.target.value)} required />
                             </div>
                             <div className="col-md-6 mb-3">
                                 <label className="form-label">Joining Date *</label>
@@ -216,9 +204,11 @@ export default function AddEmployee() {
                                 <label className="form-label">Designation</label>
                                 <select className="form-control" value={designation} onChange={(e) => setDesignation(e.target.value)} required>
                                     <option value="">Select</option>
-                                    <option value="finance">Finance</option>
-                                    <option value="developer">Developer</option>
-                                    <option value="executive">Executive</option>
+                                    {
+                                        getDesignations.length > 0 && getDesignations.map((item, index) => {
+                                            return <option key={`designation-index-${index}`} value={item.id}>{item.name}</option>
+                                        })
+                                    }
                                 </select>
                             </div>
                         </div>

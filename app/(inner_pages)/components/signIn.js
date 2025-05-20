@@ -1,13 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { useSetCookie } from 'cookies-next/client';
+import { AuthContext } from "@/app/providers/authprovider";
 
 export default function SignIn() {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const { setIsLoggedIn, setUser } = useContext(AuthContext);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -20,7 +22,6 @@ export default function SignIn() {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-
         theme: "light",
     }
     const handleSubmitForm = async (e) => {
@@ -45,13 +46,13 @@ export default function SignIn() {
                 e.target.reset();
                 toast.success(data.message, notifySettings);
                 setCookie("token", data.token, {
+                    secure: false,
                     expires: new Date(Date.now() + 60 * 60 * 24 * 7),
                     path: '/',
                 });
+                setIsLoggedIn(true);
+                setUser(data.data);
                 router.push('/dashboard');
-
-                const role = data.role;
-
             } else {
                 toast.error(data.message, notifySettings);
             }
@@ -62,7 +63,6 @@ export default function SignIn() {
             setIsLoading(false);
         }
     }
-
 
     return (
         <form action="#" className="form-1" onSubmit={handleSubmitForm}>
@@ -94,7 +94,9 @@ export default function SignIn() {
             }
             </button>
 
-            <ToastContainer />
+            <div className="outer-toster">
+                <ToastContainer />
+            </div>
 
         </form>
     )

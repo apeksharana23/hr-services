@@ -4,6 +4,7 @@ import "./globals.css";
 import "./styles/globals.css";
 import Header from "./header/page"; // Import the Header component
 import Footer from "./footer/page"; // Import the Footer component
+import AuthProvider from "./providers/authprovider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +19,7 @@ const geistMono = Geist_Mono({
 const nunito = Nunito({
   variable: "--font-nunito-sans",
   display: "swap",
-  weight: ["300", "400", "600", "700","800", "900"],
+  weight: ["300", "400", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
 
@@ -33,9 +34,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${nunito.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

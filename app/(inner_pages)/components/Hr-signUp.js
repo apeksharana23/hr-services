@@ -52,6 +52,7 @@ export default function SignUp() {
         setPassword("");
         setConfirmPassword("");
         e.target.reset();
+
         toast.success(data.message, notifySettings);
       } else {
         toast.error(data.message, notifySettings);
@@ -61,6 +62,7 @@ export default function SignUp() {
     } finally {
       setIsLoading(false);
     }
+    routeModule.push("/login");
   };
 
   return (
