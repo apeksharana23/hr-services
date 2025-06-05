@@ -9,7 +9,6 @@ import Modal from 'react-bootstrap/Modal';
 export default function Trainees() {
     const [trainingType, setTrainingType] = useState("");
     const [trainer, setTrainer] = useState("");
-    const [cost, setCost] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [description, setDescription] = useState("");
@@ -39,7 +38,7 @@ export default function Trainees() {
 
     const fetchTrainees = async () => {
         try {
-            const res = await axios.get(`/api/training-list?page=${currentPage}&limit=${rowsPerPage}`);
+            const res = await axios.get(`/api/list-training?page=${currentPage}&limit=${rowsPerPage}`);
             setTrainees(res.data.data || []);
             setTotalPages(res.data.totalPages || 1);
         } catch (err) {
@@ -56,7 +55,6 @@ export default function Trainees() {
         const payload = {
             trainingType,
             trainer,
-            cost,
             startDate,
             endDate,
             description,
@@ -66,7 +64,7 @@ export default function Trainees() {
         try {
             let res;
             if (isEditMode && editId) {
-                res = await axios.put(`/api/training-list?id=${editId}`, payload);
+                res = await axios.put(`/api/list-training?id=${editId}`, payload);
             } else {
                 res = await fetch('/api/trainees-list', {
                     method: 'POST',
@@ -97,7 +95,7 @@ export default function Trainees() {
     const handleDelete = async (id) => {
         if (!confirm("Are you sure you want to delete this training?")) return;
         try {
-            const res = await axios.delete(`/api/trainees-list?id=${id}`);
+            const res = await axios.delete(`/api/list-training?id=${id}`);
             if (res.status === 200) {
                 alert("Training deleted successfully!");
                 fetchTrainees();
@@ -115,7 +113,6 @@ export default function Trainees() {
         setEditId(trainee._id);
         setTrainingType(trainee.trainingType);
         setTrainer(trainee.trainer);
-        setCost(trainee.cost);
         setStartDate(trainee.startDate.slice(0, 10));
         setEndDate(trainee.endDate.slice(0, 10));
         setDescription(trainee.description || "");
@@ -168,10 +165,7 @@ export default function Trainees() {
                                                     <option value="Trainer B">Trainer B</option>
                                                 </select>
                                             </div>
-                                            <div className="col-md-6 mb-3">
-                                                <label className="form-label">Training Cost</label>
-                                                <input type="number" className="form-control" value={cost} onChange={e => setCost(e.target.value)} required />
-                                            </div>
+                                            
                                             <div className="col-md-6 mb-3">
                                                 <label className="form-label">Start Date</label>
                                                 <input type="date" className="form-control" value={startDate} onChange={e => setStartDate(e.target.value)} required />
@@ -248,7 +242,6 @@ export default function Trainees() {
                                         <strong>to</strong><br />
                                         {new Date(t.endDate).toLocaleDateString()}
                                     </td>
-                                    <td>₹ {t.cost}</td>
                                     <td className="text-center">
                                         <Button size="sm" className="my-3 varaint-chnge" onClick={() => handleEditClick(t)}>Edit</Button>
                                         <Button size="sm" className="varaint-chnge" onClick={() => handleDelete(t._id)}>Delete</Button>

@@ -1,5 +1,5 @@
 import dbConnect from '@/app/config/dbConfig';
-import Trainee from '@/app/models/traines';
+import Trainee from '@/app/models/trainees';
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/app/config/dbConfig';
-import Trainee from '@/app/models/traines';
+import Trainee from '@/app/models/trainees';
 import bcrypt from 'bcrypt';
 import { send_mail } from "@/app/utils/emailUtils";
 
@@ -13,9 +13,10 @@ export async function GET(req) {
     const skip = (page - 1) * limit;
 
     try {
-        const trainees = await Trainee.find().skip(skip).limit(limit).sort({ createdAt: -1 });
+        const trainees = await Trainee.find().skip(skip).limit(limit).sort({ createdAt: -1 }).populate('trainingType', 'type');
         const total = await Trainee.countDocuments();
         const totalPages = Math.ceil(total / limit);
+
 
         return NextResponse.json({
             success: true,
@@ -56,7 +57,8 @@ export async function POST(req) {
             contactNo,
             trainingType,
             status,
-            password: hashPassword
+            password: hashPassword,
+            joiningDate: new Date()
         });
 
         const htmlBody = `<p>Hi ${firstName} ${lastName}</p>

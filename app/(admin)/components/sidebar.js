@@ -9,6 +9,7 @@ import { IconCalendarWeek } from '@tabler/icons-react';
 import { IconListCheck } from '@tabler/icons-react';
 import { IconEdit } from '@tabler/icons-react';
 import { IconUser } from '@tabler/icons-react';
+import { IconDashboard } from '@tabler/icons-react';
 
 
 export default function SideBarDashboard() {
@@ -30,6 +31,9 @@ export default function SideBarDashboard() {
                          <div className='sidebar-inner-menu'>
                               <Sidebar className='sidebar-menu'>
                                    <Menu iconShape="square" className='sidebar-menu' icons={<IconChevronDown size={20} />}>
+
+                                        <MenuItem icon={<IconDashboard size={20} />} className='menu-item' component={<Link href="/dashboard"></Link>}> Dashboard </MenuItem>
+
 
                                         <SubMenu label="Employees" icon={<IconUser size={50} />} className='menu-item'>
                                              <MenuItem component={<Link href="/Employees"></Link>}>Employee Details</MenuItem>

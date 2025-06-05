@@ -9,7 +9,7 @@ import image_4 from "../../../img/service-4.png";
 import image_5 from "../../../img/service-5.jpg";
 import image_6 from "../../../img/service-6.jpg";
 
-export default function ServicesDetail({ params }) {
+export default function ServicesDetail({ params}) {
     const { slug } = params || {};
     const serviceData = [
         {

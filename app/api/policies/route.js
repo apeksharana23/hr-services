@@ -11,7 +11,7 @@ export async function GET(req) {
   const skip = (page - 1) * limit;
 
   try {
-    const policies = await Policy.find().skip(skip).limit(limit).sort({ createdAt: -1 });
+    const policies = await Policy.find().populate('designationId', 'name').skip(skip).limit(limit).sort({ createdAt: -1 });
     const total = await Policy.countDocuments();
     const totalPages = Math.ceil(total / limit);
 

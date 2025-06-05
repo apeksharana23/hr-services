@@ -5,7 +5,6 @@ import Navbar from "./components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/app/globals.css";
 import "@/app/styles/globals.css";
-import AuthProvider from "../providers/authprovider";
 
 export default function PageLayout({ children }) {
     return (

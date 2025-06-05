@@ -57,9 +57,9 @@ export async function DELETE(req) {
     const id = searchParams.get('id');
 
     try {
-        const deleted = User.findByIdAndDelete(id);
+        const deleted = await User.findByIdAndDelete(id); 
         if (!deleted) {
-            return NextResponse.json({ error: 'User is not found' }, { status: 404 });
+            return NextResponse.json({ error: 'User not found' }, { status: 404 });
         }
         return NextResponse.json({ message: 'User deleted' });
     } catch (error) {

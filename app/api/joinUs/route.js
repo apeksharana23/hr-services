@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/app/config/dbConfig';
-import Trainee from '@/app/models/traines';
+import Trainee from '@/app/models/trainees';
 import bcrypt from 'bcrypt';
 import User from '@/app/models/user';
 import { send_mail } from "@/app/utils/emailUtils";
+import TrainingType from '@/app/models/trainingtype';
 
 export async function GET(req) {
     await dbConnect();
@@ -50,15 +51,23 @@ export async function POST(req) {
         const password = Math.random().toString(36).slice(2, 15);
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        const trainingTypeDoc = await TrainingType.findOne({ type: trainingType });
+
+        if (!trainingTypeDoc) {
+            return NextResponse.json({ error: 'Invalid training type selected' }, { status: 400 });
+        }
+
         const newTrainee = await Trainee.create({
             firstName,
             lastName,
             email,
             contactNo,
-            trainingType,
-            password:hashedPassword,
-            status: "Inactive"
+            trainingType: trainingTypeDoc._id,
+            password: hashedPassword,
+            status: "Inactive",
+            joiningDate: new Date(),
         });
+
 
         const existinguser = await User.find({ role: "hr" });
         if (existinguser) {

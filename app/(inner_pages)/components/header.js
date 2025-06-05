@@ -60,6 +60,9 @@ const PageHeader = () => {
             <li>
               <Link href="/services">Services</Link>
             </li>
+             <li>
+              <Link href="/courses">Courses</Link>
+            </li>
             <li>
               <Link href="/contact">Contact</Link>
             </li>

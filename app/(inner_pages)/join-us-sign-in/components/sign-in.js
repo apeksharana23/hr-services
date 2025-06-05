@@ -1,17 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useRouter } from 'next/navigation';
+import { useSetCookie } from 'cookies-next/client';
+import { AuthContext } from "@/app/providers/authprovider";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginTraineesPage() {
+  const { refreshAuth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const setCookie = useSetCookie();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
 
     const formData = {
       email,
@@ -28,18 +34,24 @@ export default function LoginTraineesPage() {
       });
 
       const data = await response.json();
-      console.log("Login Response:", data);
 
       if (response.ok) {
-        alert("Login successful!");
-        setEmail("");
-        setPassword("");
+        toast.success("Login successful!");
+        setCookie("trainee_token", data.token, {
+          maxAge: 60 * 60 * 24 * 7,
+          path: '/',
+        });
+
+        setTimeout(async () => {
+          await refreshAuth();
+          router.push('/dashboard-trainees');
+        }, 1000);
       } else {
-        setError(data.error || "Invalid email or password.");
+        toast.error(data.error || "Invalid email or password.");
       }
     } catch (error) {
       console.error("Login Error:", error);
-      setError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -47,6 +59,9 @@ export default function LoginTraineesPage() {
 
   return (
     <>
+      <div className="outer-toster">
+        <ToastContainer />
+      </div>
       <form onSubmit={handleSubmit} className="space-y-10 w-[70%] mx-auto">
         <div className="w-full">
           <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -85,10 +100,8 @@ export default function LoginTraineesPage() {
           disabled={loading}
           className="w-full flex mt-2 items-center justify-center gap-2 bg-blue-900 text-white text-lg py-3 rounded-md hover:!bg-blue-800 transition"
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </button>
-
-        {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
       </form>
 
       <p className="text-sm text-center text-gray-600 last-text-1 pt-3">

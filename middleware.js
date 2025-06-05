@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export function middleware(request) {
   let token = "", isAuthPage = false;
-  let authPages = ['/Employees', '/dashboard', '/policies', '/add-employee', '/designation'];
+  let authPages = ['/Employees', '/dashboard', '/policies', '/add-employee', '/designation','/dashboard-trainee'];
   const currentPage = request.nextUrl.pathname;
 
   if (authPages.includes(currentPage)) {
