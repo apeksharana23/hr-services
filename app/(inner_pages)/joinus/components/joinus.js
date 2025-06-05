@@ -7,10 +7,10 @@ export default function JoinUs() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
-  const [training, setTraining] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [getTrainingTypes, setTrainingTypes] = useState([]);
+  const [trainingType, setTrainingType] = useState("");
 
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function JoinUs() {
       lastName,
       email,
       contactNo: contact,
-      trainingType: training,
+      trainingType,
        status: "Active",
     };
 
@@ -61,7 +61,7 @@ export default function JoinUs() {
         setLastName("");
         setEmail("");
         setContact("");
-        setTraining("");
+        setTrainingType("");
       } else {
         setError(data.error || "Something went wrong.");
       }
@@ -129,15 +129,15 @@ export default function JoinUs() {
         <div className="w-[100%]">
           <label className="block text-sm font-semibold text-gray-700 mb-1">Training For</label>
           <select
-            value={training}
-            onChange={(e) => setTraining(e.target.value)}
+            value={trainingType}
+            onChange={(e) => setTrainingType(e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
             required
           >
             <option value="">Select Training</option>
-            {getTrainingTypes.map((item) => (
-              <option key={item._id} value={item.type}>
-                {item.type}
+            {getTrainingTypes.map((type) => (
+              <option key={type._id} value={type.type}>
+                {type.type}
               </option>
             ))}
           </select>

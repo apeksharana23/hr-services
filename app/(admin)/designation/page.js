@@ -198,7 +198,8 @@ export default function Designation() {
                                         <td>{(currentPage - 1) * rowsPerPage + i + 1}</td>
                                         <td>{d.name}</td>
                                         <td className="text-center gap-2 flex flex-col">
-                                            <Button size="sm" onClick={() => handleEditClick(d)} className="w-full text-center  py-2 text-sm no-underline  !bg-[#e2e3ed]  text-black border border-[#cfd0da] rounded hover:bg-[#d5d6e0] transition-all d-flex align-items-center justify-content-center gap-4"
+                                            <Button size="sm" onClick={() => handleEditClick(d)} 
+                                            className="w-full text-center  py-2 text-sm no-underline  !bg-[#e2e3ed]  text-black border border-[#cfd0da] rounded hover:bg-[#d5d6e0] transition-all d-flex align-items-center justify-content-center gap-4"
                                             >
                                                 <IconEdit size={16} /></Button>
                                             <Button size="sm" onClick={() => handleDelete(d._id)} className="w-full text-center  py-2 text-sm bg-[#e2e3ed] text-black border border-[#cfd0da] rounded !hover:bg-[#d5d6e0] button-delete transition-all d-flex align-items-center justify-content-center gap-4"

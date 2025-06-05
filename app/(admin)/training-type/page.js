@@ -9,6 +9,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { IconEdit, IconTrash } from '@tabler/icons-react';
+
 
 
 
@@ -278,9 +280,12 @@ export default function TrainingTypes() {
                                             <img src={item.image} alt="Course" style={{ width: '60px', height: '40px', objectFit: 'cover' }} />
                                         </td>
 
-                                        <td className="text-center">
-                                            <Button size="sm" className="my-3 varaint-chnge" onClick={() => handleEditClick(item)}>Edit</Button>
-                                            <Button size="sm" className="varaint-chnge" onClick={() => handleDelete(item._id)}>Delete</Button>
+                                        <td className="text-center  gap-2 flex flex-col">
+                                            <Button size="sm"
+                                            className="w-full text-center  py-2 text-sm no-underline  !bg-[#e2e3ed]  text-black border border-[#cfd0da] rounded hover:bg-[#d5d6e0] transition-all d-flex align-items-center justify-content-center gap-4" onClick={() => handleEditClick(item)}>
+                                               <IconEdit size={16} /></Button>
+                                            <Button size="sm" className="w-full text-center  py-2 text-sm no-underline  !bg-[#e2e3ed]  text-black border border-[#cfd0da] rounded hover:bg-[#d5d6e0] transition-all d-flex align-items-center justify-content-center gap-4" onClick={() => handleDelete(item._id)}>
+                                                <IconTrash size={16} /></Button>
                                         </td>
                                     </tr>
                                 ))}

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { FaRupeeSign } from "react-icons/fa";
 
 export default function TrainingTypeCard({ item }) {
@@ -27,9 +28,11 @@ export default function TrainingTypeCard({ item }) {
                 </div>
 
                 <div className="mt-4 text-gray-900 font-semibold flex items-center gap-1">
-                    <button className="w-md bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition">
-                        Buy Now
-                    </button>
+                    <Link href={`/checkout?courseId=${item._id}`}>
+                        <button className="w-md  bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition">
+                            Buy Now
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

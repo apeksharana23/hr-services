@@ -3964,5 +3964,25 @@ svg.tabler-icon.tabler-icon-upload {
   color: #000;
 }
 
-
+/* order summary */
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    left: 262px;
+    height: 34px;
+    width: 85px;
+    margin-left: calc(-1 * var(--bs-border-width));
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    text-align: center;
+}
+.input-group .btn {
+    position: absolute;
+    z-index: 2;
+}
+.input-group > .form-control, .input-group > .form-floating, .input-group > .form-select {
+    height: 0%;
+    position: relative;
+    flex: auto;
+    width: 1%;
+    min-width: 0;
+}
 

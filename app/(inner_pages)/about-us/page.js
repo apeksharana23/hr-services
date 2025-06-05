@@ -12,6 +12,7 @@ import ctaicon2Image from "../../img/ctaicon2.png";
 
 
 
+
 export default function AboutUs() {
     return (
         <div className="about-page-header-bg">

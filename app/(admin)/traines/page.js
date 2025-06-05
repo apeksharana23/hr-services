@@ -9,6 +9,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { IconEdit, IconTrash } from '@tabler/icons-react';
+
 
 export default function Trainees() {
     const [firstName, setFirstName] = useState("");
@@ -279,9 +281,11 @@ export default function Trainees() {
                                         <td>{t.contactNo}</td>
                                         <td>{t.trainingType?.type || 'N/A'}</td>
                                         <td>{t.status}</td>
-                                        <td className="text-center">
-                                            <Button size="sm" className="my-3 varaint-chnge" onClick={() => handleEditClick(t)}>Edit</Button>
-                                            <Button size="sm" className="varaint-chnge" onClick={() => handleDelete(t._id)}>Delete</Button>
+                                        <td className="text-center gap-2 flex flex-col">
+                                            <Button size="sm" className="w-full text-center  py-2 text-sm no-underline  !bg-[#e2e3ed]  text-black border border-[#cfd0da] rounded hover:bg-[#d5d6e0] transition-all d-flex align-items-center justify-content-center gap-4"onClick={() => handleEditClick(t)}>
+                                                 <IconEdit size={16} /></Button>
+                                            <Button size="sm"className="w-full text-center  py-2 text-sm no-underline  !bg-[#e2e3ed]  text-black border border-[#cfd0da] rounded hover:bg-[#d5d6e0] transition-all d-flex align-items-center justify-content-center gap-4"  onClick={() => handleDelete(t._id)}>
+                                               <IconTrash size={16} /></Button>
                                         </td>
                                     </tr>
                                 )) : (
