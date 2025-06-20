@@ -99,12 +99,12 @@ const Footer = () => {
         <div className="container">
           <div className="footer-bottom-area">
             <div className="row">
-              <div className="col-md">
+              <div className="col-md-6">
                 <p>
                   Copyright © 2022 <span>Emphires</span> All Rights Reserved.
                 </p>
               </div>
-              <div className="col-md">
+              <div className=" col-md-6">
                 <ul className="footer-menu">
                   <li className="menu-item">
                     <Link href="#">Privacy &amp; Policy</Link>

@@ -3934,51 +3934,55 @@ svg.tabler-icon.tabler-icon-upload {
 
 
 .user-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
 }
 
 .info-card {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  padding: 25px;
-  width: 100%;
-  max-width: 500px;
-  font-family: 'Segoe UI', sans-serif;
-  position: relative;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 100%;
+    max-width: 500px;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .card-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #000;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
 }
 
 /* order summary */
-.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-    left: 262px;
+.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    right: 0;
     height: 34px;
     width: 85px;
-    margin-left: calc(-1 * var(--bs-border-width));
+    margin-left: 0;
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     text-align: center;
 }
+
 .input-group .btn {
     position: absolute;
-    z-index: 2;
+    z-index: 9;
 }
-.input-group > .form-control, .input-group > .form-floating, .input-group > .form-select {
+
+.input-group>.form-control,
+.input-group>.form-floating,
+.input-group>.form-select {
     height: 0%;
     position: relative;
     flex: auto;
@@ -3986,3 +3990,651 @@ svg.tabler-icon.tabler-icon-upload {
     min-width: 0;
 }
 
+/* Responsive Start */
+
+@media only screen and (max-width: 1800px) {
+
+    .sol {
+
+        margin-left: 68px;
+    }
+
+    a.scroll-area {
+        top: -11px;
+
+    }
+
+    .appointment-section-left {
+        width: 580px;
+
+    }
+
+    form {
+        margin-left: -89px;
+
+    }
+
+    .button-click {
+
+        margin-left: -275px;
+
+    }
+
+    .section-slider {
+        margin-left: 77px;
+    }
+
+    .video-wrapper h2 {
+        font-size: 39px;
+        line-height: 42px;
+    }
+
+    .appointment-section {
+        margin-left: -202px;
+    }
+
+    .appointment-section-left {
+        margin-left: 185px;
+    }
+
+    .responsive-width {
+        width: 65%;
+    }
+
+    .responsive-width-two {
+        width: 55%;
+    }
+}
+
+
+@media only screen and (max-width: 1679px) {
+
+    .sol {
+        margin-left: 156px;
+    }
+
+    .sol h1 {
+        font-size: 61px;
+    }
+
+    .slider-1 {
+        margin-left: 11px;
+        width: 229.4px;
+        margin-right: 14px;
+    }
+
+    .section-slider {
+        top: -24px;
+        margin-left: 73px;
+    }
+
+    .appointment-section-left {
+        width: 485px;
+    }
+
+    form {
+        margin-left: -7px;
+    }
+
+    .button-click {
+        margin-left: -323px;
+    }
+
+    .image:after {
+        left: 503px;
+    }
+
+}
+
+@media only screen and (max-width: 1439px) {
+    .sol {
+        margin-left: 94px;
+    }
+
+    .btn-play {
+        width: 100%;
+    }
+
+    .image:after {
+        left: 423px;
+        bottom: -36px;
+    }
+
+    .section-slider {
+        top: -24px;
+        margin-left: 45px;
+    }
+
+    .responsive-width-two {
+        width: 58%;
+    }
+}
+
+@media only screen and (max-width: 1365px) {
+    .sol {
+        margin-left: 124px;
+    }
+
+    .sol h1 {
+        font-size: 57px;
+    }
+
+    .nav-links {
+        gap: 51px;
+    }
+
+    .section-slider {
+        margin-left: 0px;
+    }
+
+    .appointment-section-left {
+        width: 419px;
+    }
+
+    .button-click {
+        margin-left: -343px;
+    }
+
+}
+
+@media only screen and (max-width: 1279px) {
+    .inner-content-box {
+        width: 142px;
+    }
+
+    .section-rght-inner {
+        width: 455px;
+        padding-right: 0;
+    }
+
+    .container {
+        padding: auto;
+    }
+
+    .appointment-section {
+        margin-left: -51px;
+    }
+
+    .appointment-section-left {
+        width: 563px;
+    }
+
+    .appointment-heading {
+        margin-left: 40px;
+    }
+
+    .button-click {
+        margin-left: -307px;
+    }
+
+    .slider-1 {
+        width: 213.4px;
+    }
+
+    .video-wrapper h2 {
+        font-size: 33px;
+        line-height: 35px;
+    }
+
+    .sol {
+        margin-left: 146px;
+    }
+
+    .sol h1 {
+        font-size: 54px;
+    }
+
+    .nav-links {
+        gap: 44px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .top-header-right {
+        width: 28%;
+    }
+
+    .nav-links {
+        gap: 26px;
+    }
+
+    .sol {
+        margin-left: 135px;
+    }
+
+    .sol h1 {
+        font-size: 44px;
+    }
+
+    .btn-play {
+        width: auto;
+    }
+
+    .image:after {
+        left: 779px;
+    }
+
+    .abt-us-rgt {
+        padding: 22px 61px 0 15px;
+    }
+
+    .abt-us-rgt p {
+        margin: 11px 13px 20px 97px;
+    }
+
+    .abt-us-content-box1-icon img {
+        margin-top: -5px;
+        width: 45%;
+
+    }
+
+    .abt-us-content-box1-icon {
+        width: 32%;
+    }
+
+    .btn-3 a {
+        padding: 19px 44px;
+    }
+
+    .approach-box:before {
+        display: none;
+    }
+
+    .approach-text {
+        font-size: 13px;
+    }
+
+    .slider-1 {
+        width: 171.4px;
+    }
+
+    .section-slider {
+        top: -84px;
+    }
+
+    .slider-1-testinomial {
+        width: 520px;
+    }
+
+    .slider-1-box-content-text {
+        padding: 42px 8px 37px 45px;
+    }
+
+    .footer-support {
+        width: 60%;
+        padding: 20px 10px;
+    }
+
+    form {
+        margin-left: -74px;
+    }
+
+    textarea {
+        width: 301px;
+    }
+
+    .button-click {
+        margin-left: -118px;
+    }
+
+
+    .video-wrapper h2 {
+        font-size: 27px;
+        line-height: 28px;
+    }
+
+    .responsive-width {
+        width: 100%;
+    }
+
+    .appointment-heading {
+        margin-left: 0px;
+    }
+
+    h4.first-heading {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .newsletter {
+        font-size: 45px;
+        line-height: 45px;
+    }
+
+    form {
+        margin-left: -96px;
+    }
+
+    input.section-five-input {
+        width: 458px;
+    }
+
+    textarea {
+        width: 458px;
+    }
+
+    .button-click {
+        margin-left: -268px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .top-header-right {
+        width: 36%;
+    }
+
+    .top-header-left {
+        margin-left: 43px;
+        width: 58%;
+    }
+
+    .logo {
+        margin-left: -10px;
+        margin-top: 6px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .logo {
+        margin-left: -11px;
+        margin-top: 1px;
+        width: 19%;
+        font-size: 21px;
+
+    }
+
+    a.abt-btn.bg-chnge-1 {
+        font-size: 13px;
+    }
+
+    .abt-btn {
+        padding: 14px 23px;
+    }
+
+    .nav-links {
+        margin-top: 4px;
+    }
+
+    .sol {
+        margin-left: 108px;
+        margin-top: 259px;
+    }
+
+    .sol h3 {
+        font-size: 12px;
+    }
+
+    .sol h1 {
+        font-size: 31px;
+    }
+
+    .btn-3 {
+        margin-top: 24px;
+        width: auto;
+    }
+
+    .btn-3 a {
+        padding: 14px 44px;
+    }
+
+    .content-heading {
+        font-size: 20px;
+        line-height: 20px;
+
+    }
+
+    .inside-box-content {
+        padding-top: 20px;
+    }
+
+    .video-wrapper h2 {
+        font-size: 20px;
+        line-height: 20px;
+    }
+    .image:after {
+    left: 557px;
+}
+.abt-us-rgt p {
+    margin: 11px 2px 20px 0px;
+}
+.appointment-section-left {
+    width: 467px;
+}
+form {
+    margin-left: 14px;
+}
+.button-click {
+    margin-left: -330px;
+}
+.approach-text {
+    padding: 0 69px;
+}
+.approach-text {
+    font-size: 15px;
+}
+.slider-1 {
+    width: 126.4px;
+}
+.responsive-width-two{
+    width: 100%;
+}
+.footer-support {
+    width: 73%;
+}
+.call-logo img {
+    margin-left: 167px;
+}
+.footer-bottom-area p {
+    font-size: 12px;
+}
+li.menu-item {
+    margin: 0 7px;
+}
+}
+
+@media only screen and (max-width: 767px) {
+.top-header-left {
+    width: 57%;
+}
+.left-img-1 {
+    gap: 14px;
+}
+.left-img img {
+    width: 12%;
+}
+.right-img img {
+    width: 12%;
+}
+.left-img p {
+    font-size: 12px;
+}
+.right-img p {
+    font-size: 12px;
+}
+.logo {
+    font-size: 19px;
+}
+.nav-links {
+    gap: 15px;
+}
+a.abt-btn.bg-chnge-1 {
+    font-size: 10px;
+}
+.col-md-3.register-hr {
+    margin-top: 0px;
+}
+.nav-links {
+    margin-top: 2px;
+}
+.sol {
+    margin-left: 15px;
+    margin-top: 248px;
+}
+.section-two {
+    background-size: cover;
+    height: 600px;
+}
+.inside-box-img img {
+    width: 10%;
+}
+.box-1:before, .box-2:before, .box-3:before, .box-4:before, .box-5:before, .box-6:before {
+    font-size: 45px;
+    line-height: 45px;
+    top: 22px;
+}
+.inside-box-content {
+    padding-top: 11px;
+}
+.content-heading {
+    font-size: 16px;
+    line-height: 16px;
+}
+.change-top {
+    margin-top: 104px;
+}
+.section-three {
+    height: 1180px;
+}
+[class^="box-"] {
+    padding: 205px 0px 0px;
+}
+h2.heading-text {
+    font-size: 31px;
+    line-height: 31px;
+}
+.abt-us-box {
+    top: 45px;
+    right: -17px;
+}
+.image:after {
+    left: 384px;
+}
+.abt-us-rgt p {
+    font-size: 16px;
+    line-height: 16px;
+}
+.abt-us-content {
+    margin: 52px 0 29px;
+}
+.abt-us-content-box1-icon img {
+    margin-top: 1px;
+    width: 39%;
+}
+.abt-us-content-heading {
+    font-size: 15px;
+    line-height: 15px;
+}
+.abt-us-more-text {
+    font-size: 15px;
+    font-weight: 200;
+}
+.end-text {
+    font-size: 13px;
+    margin: 17px 0 0;
+}
+.section-four {
+    padding-bottom: 0px;
+}
+.video-wrapper h2 {
+    font-size: 17px;
+    line-height: 17px;
+}
+.appointment-section {
+    margin-left: -71px;
+}
+h4.first-heading {
+    font-size: 15px;
+    line-height: 15px;
+}
+.newsletter {
+    font-size: 32px;
+    line-height: 32px;
+}
+.appointment-heading {
+    margin-left: 45px;
+}
+input.section-five-input {
+    width: 399px;
+}
+textarea {
+    width: 396px;
+}
+.button-click {
+    margin-left: -271px;
+}
+.appointment-section-rght {
+    padding: 58px 0 0 33px;
+}
+.approach-title {
+    font-size: 25px;
+    line-height: 25px;
+}
+.approach-text {
+    font-size: 11px;
+}
+.approach-ihbox-heading {
+    font-size: 18px;
+    line-height: 18px;
+}
+.approach-ihbox-text {
+    font-size: 13px;
+}
+.slider-1 {
+    width: 101.4px;
+}
+.section-slider {
+    top: -112px;
+}
+.testinomial-section {
+    padding: 141px 0 63px;
+}
+h4.testinomial-first-heading {
+    font-size: 11px;
+}
+h2.testinomial-second-heading {
+    line-height: 31px;
+    font-size: 31px !important;
+}
+.testinomial-text {
+    font-size: 17px;
+    line-height: 19px;
+}
+.testinomial-slider {
+    padding-bottom: 30px;
+}
+.slider-1-box-content-text {
+    padding: 21px 8px 37px 45px;
+}
+.quote-text {
+    font-size: 14px;
+    line-height: 21px;
+}
+.pbminfotech-box-title {
+    font-size: 16px;
+    line-height: 19px;
+}
+.footer-support {
+    width: 82%;
+}
+p.footer-column-text {
+    font-size: 13px;
+}
+p.footer-logo img {
+    height: 51px;
+}
+h5.footer-support-inner span {
+    margin-top: -5px;
+}
+.call-logo img {
+    margin-left: 186px;
+    margin-top: -40px;
+}
+.call-logo img {
+    margin-left: 145px;
+}
+.footer-bottom-area p {
+    font-size: 9px;
+}
+}

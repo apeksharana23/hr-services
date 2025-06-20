@@ -6,10 +6,10 @@ import appointmentImage from "../img/appointment.jpg";
 export default function Section6() {
     return(
         <div className="section-six">
-                <div className="container-fluid p-0">
+                <div className="container">
                   <div className="row g-0">
                     {/* Left Column */}
-                    <div className="col-xl-6 appointment-section">
+                    <div className="col-md-12  responsive-width appointment-section">
                       <div className="appointment-section-left">
                         <div className="appointment-heading">
                           <h4 className="first-heading">WHO WE ARE</h4>

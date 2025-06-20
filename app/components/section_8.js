@@ -181,7 +181,7 @@ export default function Section8() {
                             </div>
 
                             {/* Right Column */}
-                            <div className="col-xl-7">
+                            <div className="col-xl-7 col-md-12 responsive-width-two">
                                 <div className="testinomial-slider">
                                     <div className="testinomial-slider-wrapper">
                                         {/* Testimonial Item */}

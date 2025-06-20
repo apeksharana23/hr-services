@@ -3,6 +3,9 @@ import dbConnect from '@/app/config/dbConfig';
 import Trainee from '@/app/models/trainees';
 import bcrypt from 'bcrypt';
 import { send_mail } from "@/app/utils/emailUtils";
+import TrainingType from '@/app/models/trainingtype'; 
+
+
 
 export async function GET(req) {
     await dbConnect();

@@ -16,7 +16,7 @@ export default function Section3() {
         <div className="section-three">
         <div className="container">
           <div className="section-three-top">
-            <div className="row">
+            <div className="row new-width">
               {/* Box 1: Employee Management */}
               <div className="col-md-4">
                 <div className="box-1">
@@ -42,7 +42,7 @@ export default function Section3() {
               </div>
 
               {/* Box 2: Attendance Tracking */}
-              <div className="col-md-4">
+              <div className="col-md-4 change-top">
                 <div className="box-2">
                   <div className="inside-box">
                     <div className="inside-box-icon">
@@ -66,7 +66,7 @@ export default function Section3() {
               </div>
 
               {/* Box 3: Leave Management */}
-              <div className="col-md-4">
+              <div className="col-md-4 change-top">
                 <div className="box-3">
                   <div className="inside-box">
                     <div className="inside-box-icon">
